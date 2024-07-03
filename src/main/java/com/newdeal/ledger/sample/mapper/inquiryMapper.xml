@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.newdeal.ledger.inquiry.mapper.InquiryMapper">
+
+    <!--1. 문의게시판 전체리스크 가져오기 -->
+    <select id="iSelectAll" resultType="com.newdeal.ledger.inquiry.dto.InquiryDto">
+
+    </select>
+    <!--1-ⓐ. 문의게시판 전체리스크 총갯수 -->
+    <select id="iSelectCountAll" resultType="int">
+
+    </select>
+</mapper>
