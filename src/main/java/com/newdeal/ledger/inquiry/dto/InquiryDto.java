@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Data
 public class InquiryDto {
 
-	private int cno;
+	private int qbno;
 	private String email;
 	private String qtitle;
 	private String qcontent;

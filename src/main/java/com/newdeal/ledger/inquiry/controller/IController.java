@@ -2,6 +2,7 @@ package com.newdeal.ledger.inquiry.controller;
 
 import com.newdeal.ledger.inquiry.dto.InquiryDto;
 import com.newdeal.ledger.inquiry.service.InquiryService;
+import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Controller
 
@@ -24,14 +26,28 @@ public class IController {
 	@GetMapping("/index")
 	public String index(Model model, @RequestParam (defaultValue = "1") int page) {
 
-		ArrayList<InquiryDto> list = inquiryService.iSelectAll(page);
+		// ▼ service 연결
+		Map<String,Object> map = inquiryService.iSelectAll(page); //ArrayList에서 Map으로 변경 됨
 
+		// ▽ model저장 후 전송
+		model.addAttribute("map",map);
 
-		//▼model저장 후 전송
-		model.addAttribute("list",list);
 
 		return "index"; // 수정
-	}//index
+	}//index(문의 게시판 전체리스트 보기)
+
+	@GetMapping("/iView")
+	public String iView(Model model, @RequestParam(defaultValue = "1") int qbno){
+
+		// ▼ service 연결
+		InquiryDto ibdto = inquiryService.iSelectOne(qbno);
+		System.out.println("확인 : " + ibdto);
+
+		// ▽ model저장 후 전송
+		model.addAttribute("idto",ibdto);
+
+		return "iView";
+	}//iView(문의 게시물 1개보기)
 
 
 }//IController
