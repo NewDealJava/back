@@ -14,9 +14,14 @@ import java.util.Map;
 
 @Controller
 
-public class IController {
-	@Autowired
-	private InquiryService inquiryService;
+public class IController{
+	//@Autowired private InquiryService inquiryService; ← :스프링 의존성 주입방식 : 필드주입 방식
+	//▼(스프링 의존성 주입 방식: 생성자 주입방식)
+	private final InquiryService inquiryService;
+	public IController(InquiryService inquiryService){
+		this.inquiryService=inquiryService;
+	} //생성자 주입 방식
+
 
 	/**
 	 * 문의 게시판 페이지

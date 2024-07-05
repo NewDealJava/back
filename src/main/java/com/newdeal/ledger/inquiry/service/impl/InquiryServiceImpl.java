@@ -13,8 +13,14 @@ import java.util.Map;
 @Service
 public class InquiryServiceImpl implements InquiryService {
 
-    @Autowired
-    InquiryMapper inquiryMapper;
+    //@Autowired InquiryMapper inquiryMapper; ← :스프링 의존성 주입방식 : 필드주입 방식
+    //▼(스프링 의존성 주입 방식: 생성자 주입방식)
+    private final InquiryMapper inquiryMapper;
+
+    public InquiryServiceImpl(InquiryMapper inquiryMapper) {
+        this.inquiryMapper = inquiryMapper;
+    } //생성자 주입 방식
+
     //1.문의 게시판_전체 리스트 가져오기
     @Override
     public Map<String, Object> iSelectAll(int page) {
