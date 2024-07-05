@@ -120,6 +120,7 @@
 
 	<hr style="border: 2px solid blue; margin-bottom: 20px;">
 	<table style="border-top: 5px solid blue;">
+
 		<thead>
 		<colgroup>
 			<col width="7%">
@@ -137,48 +138,18 @@
 		</tr>
 		</thead>
 		<tbody style="border-bottom: 5px solid blue;">
-		<tr>
-			<td>1005</td>
-			<td>회원가입이 안돼요! 답변좀!</td>
-			<td>java_com12</td>
-			<td style="font-weight: 700; color: red;">답변대기</td>
-			<td>2024-07-01</td>
-		</tr>
-		<tr>
-			<td>1004</td>
-			<td>이메일 인증번호 수신이 안되었어요</td>
-			<td>python123</td>
-			<td style="font-weight: 700; color: blue;">답변완료</td>
-			<td>2024-07-01</td>
-		</tr>
-		<tr>
-			<td>1003</td>
-			<td>계좌를 개설하는 방법을 모르겠어요.</td>
-			<td>java_com12</td>
-			<td style="font-weight: 700; color: red;">답변대기</td>
-			<td>2024-07-01</td>
-		</tr>
-		<tr>
-			<td>1002</td>
-			<td>아이디 비밀번호를 분실했어요</td>
-			<td>node77</td>
-			<td style="font-weight: 700; color: blue;">답변완료</td>
-			<td>2024-07-01</td>
-		</tr>
-		<tr>
-			<td>1001</td>
-			<td>회원가입이 안돼요! 답변좀!</td>
-			<td>react123</td>
-			<td style="font-weight: 700; color: blue;">답변완료</td>
-			<td>2024-07-01</td>
-		</tr>
-		<tr>
-			<td>1000</td>
-			<td>회원가입이 안돼요! 답변좀!</td>
-			<td>java_com12</td>
-			<td style="font-weight: 700; color: red;">답변대기</td>
-			<td>2024-07-01</td>
-		</tr>
+		<c:forEach var="idto" items="${map.list}">
+            <tr>
+                <td>${idto.qbno}</td>
+                <td>${idto.qtitle}</td>
+                <td>${idto.email}</td>
+                <td>
+                    <c:if test="${idto.qstatus<=0 }"><strong style="color:red">답변대기</strong></c:if>
+                    <c:if test="${idto.qstatus>0 }"><strong style="color: blue">답변완료</strong></c:if>
+                </td>
+                <td><fmt:formatDate value="${idto.qdate}" pattern="YYYY-MM-dd"/> </td>
+            </tr>
+		</c:forEach>
 		</tbody>
 	</table>
 
@@ -191,11 +162,9 @@
 		<li class="num"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></li>
 
 		<!--페이지 넘버링-->
-		<a href="#" style="text-decoration: none;"><li class="num">1</li></a>
-		<a href="#" style="text-decoration: none;"><li class="num">2</li></a>
-		<a href="#" style="text-decoration: none;"><li class="num">3</li></a>
-		<a href="#" style="text-decoration: none;"><li class="num">4</li></a>
-		<a href="#" style="text-decoration: none;"><li class="num">5</li></a>
+		<c:forEach var="i" begin="${map.startPageNum}" end="${map.endPageNum }" step="1">
+		<a href="#" style="text-decoration: none;"><li class="num">${i}</li></a>
+		</c:forEach>
 		<!--페이지 넘버링-->
 
 		<!--다음 페이지-->
