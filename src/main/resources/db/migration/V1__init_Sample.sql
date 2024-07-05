@@ -1,5 +1,6 @@
-CREATE TABLE IF NOT EXISTS samples
+CREATE TABLE samples
 (
-    sample_id        BIGINT PRIMARY KEY AUTO_INCREMENT,
-    contents         VARCHAR(20)  NOT NULL
+    sbno     INT PRIMARY KEY AUTO_INCREMENT,
+    stitle   VARCHAR(255) NOT NULL,
+    scontent TEXT         NOT NULL
 );

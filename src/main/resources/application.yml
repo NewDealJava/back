@@ -1,10 +1,5 @@
 server:
-  port: 8083
-  servlet:
-    jsp:
-      init-parameters:
-        development: true
-
+  port: 8080
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
@@ -15,32 +10,9 @@ springdoc:
   swagger-ui.path: /swagger-ui-custom.html
   swagger-ui.operationsSorter: method
 
-spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
-
-# MySQL 데이터베이스 설정
-  datasource:
-    url: jdbc:mysql://localhost:3306/testdb
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
   mybatis:
     config-location: classpath:mybatis/mybatis-config.xml
     mapper-locations: classpath:/mapper/*.xml
-    configuration:
-      map-underscore-to-camel-case: true
-      cache-enabled: true
-      lazy-loading-enabled: false
-      multiple-result-sets-enabled: true
-      use-column-label: true
-      use-generated-keys: false
-      auto-mapping-behavior: PARTIAL
-      default-executor-type: SIMPLE
-      default-statement-timeout: 25000
 
 # Flyway 설정 추가하기
   flyway:
